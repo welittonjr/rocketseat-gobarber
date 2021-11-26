@@ -13,7 +13,6 @@ COPY ./backend/package.json ./
 # add app
 COPY ./backend ./
 
-RUN npm config set cache /app/.npm-cache --global
 RUN npm install
 
 EXPOSE 3000
