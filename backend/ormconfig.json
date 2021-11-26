@@ -7,13 +7,13 @@
   "database": "stock",
   "synchronize": false,
   "entities": [
-    "./src/entities/**/*.ts"
+    "./src/entity/**/*.ts"
   ],
   "migrations":[
     "./src/database/migrations/*.ts"
   ],
   "cli": {
     "migrationsDir": "./src/database/migrations",
-    "entitiesDir": "./src/entities"
+    "entitiesDir": "./src/entity"
   }
 }
