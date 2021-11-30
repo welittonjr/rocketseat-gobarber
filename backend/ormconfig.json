@@ -1,11 +1,10 @@
 {
   "type": "mysql",
-  "host": "localhost",
-  "port": 4306,
+  "host": "stock_mysql",
+  "port": 3306,
   "username": "root",
   "password": "secret",
   "database": "stock",
-  "synchronize": false,
   "entities": [
     "./src/entity/**/*.ts"
   ],
