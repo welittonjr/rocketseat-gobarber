@@ -9,7 +9,7 @@ UsersRouter.post("/", async (request, response) => {
         
         const userService = new UserService();
 
-        const user = userService.store({ 
+        const user = await userService.store({ 
             name, 
             email, 
             password

@@ -24,9 +24,7 @@ class UserService {
             password,
         });
 
-        await usersRepository.save(user);
-
-        return user;
+        return await usersRepository.save(user);
     }
 }
 
