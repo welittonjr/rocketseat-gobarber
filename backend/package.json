@@ -5,8 +5,8 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "start:dev": "nodemon server.ts",
-    "start": "ts-node server.ts",
+    "start:dev": "ts-node-dev server.ts",
+    "start": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules server.ts",
     "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
     "test": "jest"
   },

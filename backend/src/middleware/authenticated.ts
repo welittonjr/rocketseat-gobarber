@@ -7,11 +7,11 @@ interface TokenPayload {
     sub: string;
 }
 
-export default function Authenticated (
+export const Authenticated = (
     request: Request, 
     response: Response, 
     next: NextFunction
-): void {
+) => {
     const authHeader = request.headers.authorization;
 
     if (!authHeader) {
