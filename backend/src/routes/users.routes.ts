@@ -1,7 +1,10 @@
 import { Router } from "express";
+import Authenticated from "middleware/authenticated";
 import UserService from "../services/UserService";
 
 const UsersRouter = Router();
+
+UsersRouter.use(Authenticated);
 
 UsersRouter.post("/", async (request, response) => {
     try {
