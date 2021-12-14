@@ -1,25 +1,48 @@
 {
     "compilerOptions": {
-        "target": "es5",
+        "target": "es2019",
+        "moduleResolution": "node",
         "module": "commonjs",
+        "lib": ["es2019"],
+        "sourceMap": true,
         "outDir": "./dist",
         //"rootDir": "./src",
         "strict": true,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "strictFunctionTypes": true,
+        "noImplicitThis": true,
+        "resolveJsonModule": true,
+        "alwaysStrict": true,
+        "removeComments": true,
+        "noImplicitReturns": true,
+        "allowSyntheticDefaultImports": true,
         "strictPropertyInitialization": false,
-        "baseUrl": "./src",
+        "baseUrl": ".",
         "allowJs": true,
         "typeRoots": [
             "./src/@types",
             "./node_modules/@types"
         ],
-        // "paths": {
-        //   "@modules/*": ["modules/*"],
-        //   "@config/*": ["config/*"],
-        //   "@shared/*": ["shared/*"]
-        // },
+        "paths": {
+          "@src/*": ["modules/*"],
+          "@test/*": ["config/*"]
+        },
+        "rootDirs": [
+          "./src",
+          "./test"
+        ],
         "esModuleInterop": true,
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
         "forceConsistentCasingInFileNames": true
-    }
+    },
+    "include": [
+      "./src/**/*.ts",
+      "./test/**/*.ts"
+    ],
+    "exclude": [
+      "./node_modules/*",
+      "dist"
+    ]
 }
