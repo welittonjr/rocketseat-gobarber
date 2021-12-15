@@ -1,25 +1,24 @@
-import { Router } from "express";
+import { Router } from 'express'
 
-import AuthenticateUserService from '../services/AuthenticateUserService';
+import AuthenticateUserService from '../services/AuthenticateUserService'
 
-const sessionsRouter = Router();
+const sessionsRouter = Router()
 
-sessionsRouter.post("/", async (request, response) => {
-    try {
-        const { email, password } = request.body;
-        
-        const authenticateUser = new AuthenticateUserService();
+sessionsRouter.post('/', async (request, response) => {
+  try {
+    const { email, password } = request.body
 
-        const { user, token } = await authenticateUser.execute({
-            email,
-            password,
-        });
+    const authenticateUser = new AuthenticateUserService()
 
-        return response.json({ user, token });
+    const { user, token } = await authenticateUser.execute({
+      email,
+      password
+    })
 
-    } catch (err) {
-        return response.status(400).json({ error: err });
-    }
-});
+    return response.json({ user, token })
+  } catch (err) {
+    return response.status(400).json({ error: err })
+  }
+})
 
-export default sessionsRouter;
+export default sessionsRouter

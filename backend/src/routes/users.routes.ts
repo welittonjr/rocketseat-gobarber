@@ -1,30 +1,29 @@
-import { Router } from "express";
-import { Authenticated } from "../middleware/authenticated";
-import UserService from "../services/UserService";
+import { Router } from 'express'
+import { Authenticated } from '../middleware/authenticated'
+import UserService from '../services/UserService'
 
-const UsersRouter = Router();
+const UsersRouter = Router()
 
-UsersRouter.use(Authenticated);
+UsersRouter.use(Authenticated)
 
-UsersRouter.post("/", async (request, response) => {
-    try {
-        const { name, email, password } = request.body;
-        
-        const userService = new UserService();
+UsersRouter.post('/', async (request, response) => {
+  try {
+    const { name, email, password } = request.body
 
-        const user = await userService.store({ 
-            name, 
-            email, 
-            password
-        });
+    const userService = new UserService()
 
-        // delete user.password;
+    const user = await userService.store({
+      name,
+      email,
+      password
+    })
 
-        return response.json(user);
+    // delete user.password;
 
-    } catch (err) {
-        return response.status(400).json({ error: err });
-    }
-});
+    return response.json(user)
+  } catch (err) {
+    return response.status(400).json({ error: err })
+  }
+})
 
-export default UsersRouter;
+export default UsersRouter
