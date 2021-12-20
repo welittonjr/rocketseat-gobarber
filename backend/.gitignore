@@ -3,3 +3,6 @@ yarn.lock
 package-lock.json
 docker
 .env
+
+tmp/*
+!tmp/.gitkeep
