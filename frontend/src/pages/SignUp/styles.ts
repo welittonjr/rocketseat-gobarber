@@ -1,7 +1,7 @@
 import { shade } from 'polished'
 import styled from 'styled-components'
 
-import signUpBackgroudImg from '../../assets/sign-iup-background.png'
+import signUpBackgroudImg from '../../assets/sign-up-background.png'
 
 export const Container = styled.div`
   height: 100vh;
