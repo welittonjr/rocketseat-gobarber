@@ -21,7 +21,6 @@ const SignUp: React.FC = () => {
   function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.target;
     setSignUp({ ...signup, [name]: value });
-    console.log(signup);
   }
 
   function saveSignUp() {
