@@ -1,5 +1,5 @@
 import { Form } from '@unform/web'
-import React, { useCallback, useRef } from 'react'
+import React, { useCallback, useContext, useRef } from 'react'
 import { FiLogIn, FiMail, FiLock } from 'react-icons/fi'
 import logoImg from '../../assets/logo.svg'
 import Button from '../../components/Button'
@@ -8,6 +8,7 @@ import * as Yup from 'yup'
 import { Container, Content, Background } from './styles'
 import { FormHandles } from '@unform/core'
 import getValidationsErrors from '../../utils/getValidationErrors'
+import { AuthContext } from '../../context/AuthContext'
 
 interface SignInFormData {
   email: string;
@@ -18,9 +19,15 @@ const SignIn: React.FC = () => {
 
   const formRef = useRef<FormHandles>(null);
 
+  const { signIn } = useContext(AuthContext)
+
   const handleSubmit = useCallback(
     async (data: SignInFormData) => {
       try {
+        formRef.current?.setErrors({
+          name: 'Nome obrigatório'
+        })
+
         const schema = Yup.object().shape({
           email: Yup.string()
             .required('E-mail obrigatório!')
@@ -32,9 +39,11 @@ const SignIn: React.FC = () => {
           abortEarly: false,
         });
 
-        formRef.current?.setErrors({
-          name: 'Nome obrigatório'
-        })
+        signIn({
+          email: data.email,
+          password: data.password,
+        });
+
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationsErrors(err);
@@ -42,7 +51,7 @@ const SignIn: React.FC = () => {
         }
       }
     },
-    [],
+    [signIn],
   );
 
   return (
