@@ -14,7 +14,7 @@ class SchedulesService {
 
     const scheduleDate = startOfHour(date);
 
-    const findScheduleInSameDate = schedulesRepository.findByDate(
+    const findScheduleInSameDate = await schedulesRepository.findByDate(
       scheduleDate,
     );
 

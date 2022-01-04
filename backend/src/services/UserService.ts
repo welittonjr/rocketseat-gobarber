@@ -2,6 +2,8 @@ import { getRepository } from 'typeorm'
 import { hash } from 'bcryptjs'
 import User from '../entity/User'
 import uploadConfig from '../config/upload'
+import * as path from 'path'
+import * as fs from 'fs'
 
 interface Request {
     name: string;
@@ -9,8 +11,8 @@ interface Request {
     password: string;
 }
 interface RequestAvatar {
-  user_id: string;
-  avatarFilename: string;
+  user_id: string ;
+  avatarFilename: string | undefined;
 }
 class UserService {
 
