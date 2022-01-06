@@ -9,8 +9,6 @@ import { Authenticated } from '../middleware/authenticated'
 const UsersRouter = Router()
 const upload = multer(uploadConfig)
 
-UsersRouter.use(Authenticated)
-
 UsersRouter.post('/', async (request, response) => {
   try {
     const { name, email, password } = request.body
@@ -40,7 +38,7 @@ UsersRouter.patch('/avatar',
 
       const user = await userService.updateAvatar({
         user_id: request.user.id as string,
-        avatarFilename: request.file?.filename,
+        avatarFilename: request.file?.filename || '',
       });
       
       return response.json(user)

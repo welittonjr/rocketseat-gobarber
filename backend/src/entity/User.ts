@@ -20,12 +20,14 @@ class User {
   @Column()
   password: string;
 
+  @Column()
+  avatar: string;
+
   @CreateDateColumn()
   created_at: Date;
 
   @UpdateDateColumn()
   updated_at: Date;
-  avatar: any;
 }
 
 export default User;

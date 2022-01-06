@@ -12,7 +12,7 @@ interface Request {
 }
 interface RequestAvatar {
   user_id: string ;
-  avatarFilename: string | undefined;
+  avatarFilename: string;
 }
 class UserService {
 
