@@ -12,6 +12,9 @@ import logoImg from '../../assets/logo.svg'
 import { Container, Content, Background } from './styles'
 import getValidationsErrors from '../../utils/getValidationErrors'
 
+import api from '../../service/api'
+import { useToast } from '../../hooks/toast'
+import { useHistory } from 'react-router-dom'
 interface SignUpFormData {
   name: string;
   email: string;
@@ -21,10 +24,14 @@ interface SignUpFormData {
 const SignUp: React.FC = () => {
 
   const formRef = useRef<FormHandles>(null);
+  const { addToast } = useToast();
+  const history = useHistory();
 
   const handleSubmit = useCallback(
     async (data: SignUpFormData) => {
       try {
+        formRef.current?.setErrors({});
+
         const schema = Yup.object().shape({
           name: Yup.string().required('Nome obrigatório!'),
           email: Yup.string()
@@ -37,17 +44,32 @@ const SignUp: React.FC = () => {
           abortEarly: false,
         });
 
-        formRef.current?.setErrors({
-          name: 'Nome obrigatório'
+        await api.post('/users', data);
+
+        history.push('/')
+
+        addToast({
+          type: 'success',
+          title: 'Cadastro realizado!',
+          description: 'Você já pode fazer seu logon no gobarber'
         })
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationsErrors(err);
+
           formRef.current?.setErrors(errors);
+
+          return;
         }
+
+        addToast({
+          type: 'error',
+          title: 'Error no cadastro!',
+          description: 'Ocorreu um erro ao fazer cadastro, tente novamente.'
+        })
       }
     },
-    [],
+    [addToast, history],
   );
 
   return (
