@@ -1,5 +1,5 @@
 import { startOfHour } from "date-fns";
-import Schedule from "../entity/Schedule";
+import Schedule from "../entities/Schedule";
 import SchedulesRepository from "../repositories/SchedulesRepository";
 import { getCustomRepository } from "typeorm";
 

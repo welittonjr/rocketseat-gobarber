@@ -1,7 +1,7 @@
 import { getRepository } from 'typeorm'
 import { hash } from 'bcryptjs'
-import User from '../entity/User'
-import uploadConfig from '../config/upload'
+import User from '../entities/User'
+import uploadConfig from '../../../config/upload'
 import * as path from 'path'
 import * as fs from 'fs'
 

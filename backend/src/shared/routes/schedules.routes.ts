@@ -1,8 +1,8 @@
 import { Router } from 'express'
 import { parseISO } from 'date-fns'
 
-import SchedulesRepository from '../repositories/SchedulesRepository'
-import SchedulesService from '../services/SchedulesService'
+import SchedulesRepository from '../../modules/schedules/repositories/SchedulesRepository'
+import SchedulesService from '../../modules/schedules/services/SchedulesService'
 import { getCustomRepository } from 'typeorm'
 
 const schedulesRouter = Router()
