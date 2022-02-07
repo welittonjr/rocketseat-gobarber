@@ -1,5 +1,4 @@
 import React from 'react';
-//importado para usar na interface
 import {
   RouteProps as ReactDOMRouteProps,
   Route as ReactDOMRoute,
@@ -10,18 +9,15 @@ import { useAuth } from '../hooks/auth';
 
 interface RouteProps extends ReactDOMRouteProps {
   isPrivate?: boolean;
-  component: React.ComponentType; //para receber o componente como <Component /> e nao {Component}
+  component: React.ComponentType;
 }
 
-//isPrivate se nao vier entao é inicializada como false
 const Route: React.FC<RouteProps> = ({
   isPrivate = false,
   component: Component,
   ...rest
 }) => {
-  //verifica se nesta variavel tem algo, se tiver o usuario ja esta logado
   const { user } = useAuth();
-
   return (
     <ReactDOMRoute
       {...rest}
@@ -31,7 +27,7 @@ const Route: React.FC<RouteProps> = ({
         ) : (
           <Redirect
             to={{
-              pathname: isPrivate ? '/' : '/dashboard', 
+              pathname: isPrivate ? '/' : '/dashboard',
               state: { from: location },
             }}
           />

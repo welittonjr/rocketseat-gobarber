@@ -1,4 +1,3 @@
-
 import { ValidationError } from 'yup';
 
 interface Errors {
@@ -9,7 +8,7 @@ export default function getValidationsErrors(error: ValidationError): Errors {
   const validationErrors: Errors = {};
 
   error.inner.forEach(err => {
-    validationErrors[err.path || 0] = err.message;
+    validationErrors[err.path] = err.message;
   });
 
   return validationErrors;

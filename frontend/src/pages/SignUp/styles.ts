@@ -1,14 +1,26 @@
-import { shade } from 'polished'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components';
+import { shade } from 'polished';
 
-import signUpBackgroudImg from '../../assets/sign-up-background.png'
+import backgroundImage from '../../assets/sign-up-background.png';
+
+const appearFromRight = keyframes`
+from {
+  opacity: 0;
+  transform: translateX(50px);
+}
+
+to {
+  opacity: 1;
+  transform: translateX(0);
+}
+`;
 
 export const Container = styled.div`
   height: 100vh;
 
   display: flex;
   align-items: stretch;
-`
+`;
 
 export const Content = styled.div`
   display: flex;
@@ -19,6 +31,14 @@ export const Content = styled.div`
 
   width: 100%;
   max-width: 700px;
+`;
+
+export const AnimationContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  animation: ${appearFromRight} 1s;
 
   form {
     margin: 80px 0;
@@ -28,42 +48,29 @@ export const Content = styled.div`
     h1 {
       margin-bottom: 24px;
     }
+  }
 
-    a {
-      color: #f4ede8;
-      display: block;
-      margin-top: 24px;
-      text-decoration: none;
-      transition: color 0.2s;
+  > a {
+    color: #f4ede8;
+    display: block;
+    margin-top: 24px;
+    text-decoration: none;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
 
-      &:hover {
-        color: ${shade(0.2, '#f4ede8')}
-      }
+    &:hover {
+      color: ${shade(0.2, '#F4EDE8')};
     }
 
-    > a {
-      color: #ff9000;
-      display: block;
-      margin-top: 24px;
-      text-decoration: none;
-      transition: color 0.2s;
-
-      display: flex;
-      align-items: center;
-
-      svg {
-        margin-right: 16px;
-      }
-
-      &:hover {
-        color: ${shade(0.2, '#ff9000')}
-      }
+    svg {
+      margin-right: 16px;
     }
   }
-`
+`;
 
 export const Background = styled.div`
   flex: 1;
-  background: url(${signUpBackgroudImg}) no-repeat center;
+  background: url(${backgroundImage}) no-repeat center;
   background-size: cover;
-`
+`;
