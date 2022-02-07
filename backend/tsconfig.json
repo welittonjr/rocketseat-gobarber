@@ -1,48 +1,22 @@
 {
-    "compilerOptions": {
-        "target": "es2019",
-        "moduleResolution": "node",
-        "module": "commonjs",
-        "lib": ["es2019"],
-        "sourceMap": true,
-        "outDir": "./dist",
-        //"rootDir": "./src",
-        "strict": true,
-        "noImplicitAny": true,
-        "strictNullChecks": true,
-        "strictFunctionTypes": true,
-        "noImplicitThis": true,
-        "resolveJsonModule": true,
-        "alwaysStrict": true,
-        "removeComments": true,
-        "noImplicitReturns": true,
-        "allowSyntheticDefaultImports": true,
-        "strictPropertyInitialization": false,
-        "baseUrl": ".",
-        "allowJs": true,
-        "typeRoots": [
-            "./src/@types",
-            "./node_modules/@types"
-        ],
-        "paths": {
-          "@src/*": ["modules/*"],
-          "@test/*": ["config/*"]
-        },
-        "rootDirs": [
-          "./src",
-          "./test"
-        ],
-        "esModuleInterop": true,
-        "experimentalDecorators": true,
-        "emitDecoratorMetadata": true,
-        "forceConsistentCasingInFileNames": true
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": true,
+    "strictPropertyInitialization": false,
+    "baseUrl": "./src",
+    "allowJs": true,
+    "paths": {
+      "@modules/*": ["modules/*"],
+      "@config/*": ["config/*"],
+      "@shared/*": ["shared/*"]
     },
-    "include": [
-      "./src/**/*.ts",
-      "./test/**/*.ts"
-    ],
-    "exclude": [
-      "./node_modules/*",
-      "dist"
-    ]
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+
+    "forceConsistentCasingInFileNames": true
+  }
 }
